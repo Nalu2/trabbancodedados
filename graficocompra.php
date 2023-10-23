@@ -8,24 +8,24 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Nome', 'Endereço'],
+          ['Tipo de produto', 'Valor do produto'],
           <?php
 
           include 'conexao.php';
-          $sql = "SELECT * FROM cliente";
+          $sql = "SELECT * FROM produto";
           $buscar = mysqli_query($conexao, $sql);
 
           while ($dados = mysqli_fetch_array($buscar)) {
-            $nome_cliente = $dados['nome_cliente'];
-            $endereco_cliente = $dados['endereco_cliente'];
+            $tipo_produto = $dados['tipo_produto'];
+            $valor_produto = $dados['valor_produto'];
         
           ?>
-          ['<?php echo $nome_cliente?>', <?php echo $endereco_cliente ?>],
+          ['<?php echo $tipo_produto?>', <?php echo $valor_produto ?>],
         <?php } ?>
         ]);
 
         var options = {
-          title: 'Cliente',
+          title: 'compra',
           legend: {position: 'right'}
         };
 
